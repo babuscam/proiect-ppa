@@ -6,7 +6,6 @@ public final class ResourceSingleton {
 	private static ResourceSingleton INSTANCE;
 	private int LoginFails = 0;
 	private int NrUsers = 0;
-	private int NrTasks = 0;
 	private ArrayList<User> users = new ArrayList<User>();
 	
     public static ResourceSingleton getInstance() {
@@ -30,13 +29,13 @@ public final class ResourceSingleton {
     public void addUser(User user) {
     	users.add(user);
     }
+    
+    public void removeUser(User user) {
+    	users.remove(user);
+    }
 	
     public int getLoginFails() {
 		return LoginFails;
-	}
-    
-    public int getNrTasks() {
-		return NrTasks;
 	}
     
     public int getNrUsers() {
@@ -45,10 +44,6 @@ public final class ResourceSingleton {
     
     public void addLoginFails() {
 		LoginFails++;
-	}
-    
-    public void setNrTasks(int nrTasks) {
-		NrTasks = nrTasks;
 	}
     
     public void setNrUsers(int nrUsers) {

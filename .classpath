@@ -7,7 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="dist/proiect-final.jar"/>
-	<classpathentry kind="lib" path="E:/Diverse/Facultate/An 2/Programarea pe aspecte/mysql-connector-java-8.0.23.zip"/>
 	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/Diverse/Facultate/An 2/Programarea pe aspecte/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

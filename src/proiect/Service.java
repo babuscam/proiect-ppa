@@ -23,7 +23,7 @@ public class Service {
 		
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/java?autoReconnect=true&useSSL=false",
-					"root", "123456");
+					"root", "Parola12#");
 			if (con.isClosed()) {
 				System.out.println("conexiune esuata.");
 			}

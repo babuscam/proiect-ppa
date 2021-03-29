@@ -73,7 +73,7 @@ public class UserService {
 			count = rs.getInt(1);
 
 		} catch (SQLException e) {
-
+			System.out.println();
 		}
 
 		return count;

@@ -3,7 +3,6 @@ package aspects;
 import proiect.LogService;
 import proiect.ResourceSingleton;
 import proiect.UserService;
-import proiect.TaskService;
 
 public aspect LoginAspect {
 	final int MAX_TRIES = 3;
@@ -21,7 +20,6 @@ public aspect LoginAspect {
 			}
 		}else {
 			resource.setNrUsers(UserService.getNrUsers());
-			resource.setNrTasks(TaskService.getNrTasks());
 		}
 
 	}

@@ -10,6 +10,10 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
  *
@@ -321,37 +325,46 @@ public class Main extends javax.swing.JFrame {
         menu.add(Cont);
 
         setJMenuBar(menu);
+        
+        labelConnectedUsers = new JLabel("Utilizatori inregistrati:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(cautare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(formular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(butoane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(4)
+        							.addComponent(cautare, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(layout.createSequentialGroup()
+        							.addContainerGap()
+        							.addComponent(labelConnectedUsers)))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(formular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(73)
+        					.addComponent(butoane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(formular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(cautare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(butoane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(48)
+        					.addComponent(formular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(88)
+        					.addComponent(labelConnectedUsers)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(cautare, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(18)
+        			.addComponent(butoane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(27, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -376,6 +389,10 @@ public class Main extends javax.swing.JFrame {
                         "Adaugat",
                         JOptionPane.INFORMATION_MESSAGE
                 );
+                
+                ResourceSingleton resource = ResourceSingleton.getInstance();
+                
+                labelConnectedUsers.setText("Utilizatori inregistrati: " + resource.getNrUsers());
             }
         }
         else if(btAdauga.getText() == "Update"){
@@ -483,6 +500,10 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
             );
             
+            ResourceSingleton resource = ResourceSingleton.getInstance();
+            
+            labelConnectedUsers.setText("Utilizatori inregistrati: " + resource.getNrUsers());
+            
             IdUser = 0;
             
             tFieldNume.setText("");
@@ -559,6 +580,11 @@ public class Main extends javax.swing.JFrame {
             
             tfUsername.setText("");
             tfParola.setText("");
+            
+            ResourceSingleton resource = ResourceSingleton.getInstance();
+            
+            
+            labelConnectedUsers.setText("Utilizatori inregistrati: " + resource.getNrUsers());
 
         }
     }//GEN-LAST:event_bLogInActionPerformed
@@ -627,6 +653,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel labelPrenume;
     private javax.swing.JLabel labelTelefon;
     private javax.swing.JLabel labelUsername;
+    private javax.swing.JLabel labelConnectedUsers;
     private javax.swing.JMenuItem logIn;
     private javax.swing.JMenuItem logOut;
     private javax.swing.JDialog loginDialog;
@@ -639,5 +666,4 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tFieldTelefon;
     private javax.swing.JPasswordField tfParola;
     private javax.swing.JTextField tfUsername;
-    // End of variables declaration//GEN-END:variables
 }
