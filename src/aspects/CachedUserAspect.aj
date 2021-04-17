@@ -1,9 +1,13 @@
 package aspects;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+
 import proiect.User;
 import proiect.UserService;
 
-public aspect CachedUserAspect {
+/*public aspect CachedUserAspect {
 	pointcut execGetUser(String name): execution(* UserService.getUser(String)) && args(name);
 	
 	User around(String name): execGetUser(name){
@@ -18,4 +22,4 @@ public aspect CachedUserAspect {
 		
 		return  user;
 	}
-}
+}*/

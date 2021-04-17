@@ -1,29 +1,32 @@
 package aspects;
 
-import java.sql.SQLException;
-
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
-import proiect.*;
-/*public aspect LogAspect {
-	pointcut callUserAdd(User user): execution(* UserService.addUser(User)) && args(user);
-	pointcut callUserDelete(int id): execution(* UserService.deleteUser(int)) && args(id);
+import proiect.LogService;
+import proiect.ResourceSingleton;
+import proiect.User;
+import proiect.UserService;
 
-	after(User user):callUserAdd(user){
-		String message = "A fost adaugat utilizatorul " + user.getEmail();
+@Aspect
+public class LogSpringAOP{
+	
+	@After("execution(* UserService.addUser(User)) && args(user)")
+	public void UserAdd(User user) {
+		String message = "[Spring-AOP]A fost adaugat utilizatorul " + user.getEmail();
 		LogService.addLog(message);
 		
 		ResourceSingleton resource = ResourceSingleton.getInstance();
 		resource.setNrUsers(resource.getNrUsers() + 1);
 	}
 	
-	before(int id):callUserDelete(id){
+	@Before("execution(* UserService.deleteUser(int)) && args(id)")
+	public void UserDelete(int id) {
 		User user = UserService.getUserById(id);
 		
 		if(user != null) {
-			String message = "A fost sters utilizatorul " + user.getEmail();
+			String message = "[Spring-AOP]A fost sters utilizatorul " + user.getEmail();
 			LogService.addLog(message);
 		}
 		
@@ -33,6 +36,4 @@ import proiect.*;
 		resource.setNrUsers(currentNrUsers > 0 ? currentNrUsers - 1 : 0);
 		resource.removeUser(user);
 	}
-}*/
-
-
+}

@@ -3,30 +3,25 @@ package aspects;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 
-import proiect.LogService;
 import proiect.ResourceSingleton;
 import proiect.UserService;
 import shared.LoginFailException;
 
-/*public aspect LoginAspect {
+@Aspect
+public class LoginSpringAOP{
 	final int MAX_TRIES = 3;
 	
-	pointcut callLogin(): call(* UserService.login(String, char[]));
-	
-	after() returning(boolean value): callLogin(){
+	@AfterReturning(pointcut = "execution(* UserService.login(String, char[]))", returning = "value")
+	public void Login(boolean value) throws Exception {
 		ResourceSingleton resource = ResourceSingleton.getInstance();
 		
 		if(!value) {
 			resource.addLoginFails();
 			if(resource.getLoginFails() > MAX_TRIES) {
-				LogService.addLog("Credentiale gresite. Aplicatia a fost inchisa.");
-				System.exit(0);
+				throw new LoginFailException("[Spring-AOT]Credentiale gresite. Aplicatia a fost inchisa.");
 			}
 		}else {
 			resource.setNrUsers(UserService.getNrUsers());
 		}
-
 	}
-}*/
-
-
+}

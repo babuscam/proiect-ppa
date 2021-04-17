@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import shared.ConnectionFailException;
+
 /**
  *
  * @author
@@ -26,11 +28,12 @@ public class Service {
 					"root", "Parola12#");
 			if (con.isClosed()) {
 				System.out.println("conexiune esuata.");
+				throw new ConnectionFailException("Conexiunea la baza de date a esuat.");
 			}
 			
 			return con;
 		} catch (SQLException e) {
-			return null;
+			throw new ConnectionFailException("A aparut o eroare la conectarea cu baza de date.");
 		}
 	}
 }
