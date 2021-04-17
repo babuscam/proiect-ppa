@@ -7,15 +7,6 @@ import java.sql.Statement;
 import java.util.Arrays;
 
 public class UserService {
-	public static boolean login(String username, char[] password) {
-		char[] parolaCorecta = { '1', '2', '3', '4' };
-		if (!username.equals("user") || !Arrays.equals(password, parolaCorecta)) {
-			return false;
-		}
-
-		return true;
-	}
-
 	public static User getUser(String name) {
 		ResourceSingleton resource = ResourceSingleton.getInstance();
 		
@@ -153,5 +144,14 @@ public class UserService {
 		} catch (SQLException e) {
 
 		}
+	}
+	
+	public static boolean login(String username, char[] password) {
+		char[] parolaCorecta = { '1', '2', '3', '4' };
+		if (!username.equals("user") || !Arrays.equals(password, parolaCorecta)) {
+			return false;
+		}
+
+		return true;
 	}
 }
